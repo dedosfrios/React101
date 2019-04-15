@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+class Mensaje extends React.Component{
+  render(){
+    const styles = {
+      color: this.props.color,
+      fontSize: this.props.size
+    }
+    return (<h3 style={styles}>{this.props.contenido}</h3>)
+    }
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+        <Mensaje color="pink" size="5em" contenido="Fuck this" />
+      );
   }
 }
 
