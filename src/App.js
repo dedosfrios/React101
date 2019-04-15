@@ -1,48 +1,58 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Mensaje extends React.Component{
-  render(){
-    const styles = {
-      color: this.props.color,
-      fontSize: this.props.size
-    }
-    return (<h3 style={styles}>{this.props.contenido}</h3>)
-    }
-}
-
 class Interruptor extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      power: false
+      power:false
     }
-    this.encenderLuz = this.encenderLuz.bind(this)
-  }
-  encenderLuz(){
-    this.setState((state,props)=>{
-      return {power: !state.power}   
-    })
+    const encenderLuz = () => {
+      this.setState({power:!this.state.power})
+    }
+    const apagarLuz = () => {
+      this.setState({power:false})
+    }
   }
   render(){
     let mensaje
     if(this.state.power){
-      mensaje = <span>you must turn the ligths up</span>
-    } else {
       mensaje = <span>Lights already on</span>
+    } else {
+      mensaje = <span>you must turn the ligths up</span>
     }
-    return (<div>
-        {contenido}
-      </div>)
 
+    return (<div>
+              {mensaje}
+              <TriggerOn />
+              <TriggerOff />              
+            </div>)
+
+  }
+}
+
+class TriggerOn extends React.Component{
+  render(){
+    return (<button className='button-trigger on' 
+                    onlick={this.encenderLuz}>
+                    Enciende la luz 
+            </button>)
+  }
+}
+class TriggerOff extends React.Component{
+  render(){
+    return (<button className='button-trigger off' 
+                    onlick={this.apagarLuz}>
+                    Luz apagada
+            </button>)
   }
 }
 
 class App extends Component {
   render() {
-    return (
-
-      );
+    return (<div className='container'>
+              <Interruptor />
+            </div>);
   }
 }
 
