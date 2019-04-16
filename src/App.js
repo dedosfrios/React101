@@ -3,16 +3,14 @@ import './App.css';
 
 class Interruptor extends React.Component{
   constructor(props){
-    super(props)
-    this.state = {
-      power:false
-    }
-    const encenderLuz = () => {
-      this.setState({power:!this.state.power})
-    }
-    const apagarLuz = () => {
-      this.setState({power:false})
-    }
+    super(props);
+    this.state = {power:false};
+  }  
+  encenderLuz() {
+    this.setState({power:true});
+  }
+  apagarLuz() {
+      this.setState({power:false});
   }
   render(){
     let mensaje
@@ -34,7 +32,7 @@ class Interruptor extends React.Component{
 class TriggerOn extends React.Component{
   render(){
     return (<button className='button-trigger on' 
-                    onlick={this.encenderLuz}>
+                    onClick={this.encenderLuz}>
                     Enciende la luz 
             </button>)
   }
@@ -42,7 +40,7 @@ class TriggerOn extends React.Component{
 class TriggerOff extends React.Component{
   render(){
     return (<button className='button-trigger off' 
-                    onlick={this.apagarLuz}>
+                    onClick={this.apagarLuz}>
                     Luz apagada
             </button>)
   }
